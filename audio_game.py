@@ -6,6 +6,10 @@ import pyautogui
 import cv2
 
 x_flow_speed = 900    # 流动速度 x轴
+midx = 477            # 判定中心 可修改
+midy = 363
+k = (215 - 420) / (1274 - 382) # 斜率(每个人都一样)
+b = -k * midx + midy  # 根据判定中心自动计算的b
 click_delay = 0       # 自动计算的数值 点击延迟平均值
 click_cnt = 0         # 点击次数 用于计算点击延迟
 screenshot_delay = 0  # 自动计算的数值 截图延迟平均值
@@ -62,11 +66,6 @@ def window_capture():
     screenshot_delay /= screenshot_cnt
     return img
 
-
-midx = 477
-midy = 363
-k = (215 - 420) / (1274 - 382)
-b = -k * midx + midy
 
 
 def f(x):
